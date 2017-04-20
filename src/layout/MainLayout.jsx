@@ -3,16 +3,23 @@ import { Layout, Menu, Icon } from 'antd';
 import { Router, Link } from 'dva/router';
 import styles from './MainLayout.less';
 
+const { Header, Sider, Content } = Layout;
+
+const reg = /^\/(\w+[^/])/;
 class MainLayout extends Component {
   state = {
+    defaultSelectedKeys: 'home'
   };
 
   render() {
     const { children, location } = this.props;
-
+    let keys = this.state.defaultSelectedKeys;
+    if (location.pathname && reg.test(location.pathname)) {
+      keys = reg.exec(location.pathname)[1];
+    }
     return (
       <Layout className={styles.layout}>
-        <asider
+        <Sider
           trigger={null}
           collapsible>
           <div className="logo" />
@@ -22,31 +29,22 @@ class MainLayout extends Component {
             <Menu.Item key="home">
               <Link to="home">
                 <Icon type="pie-chart" />
-                <span className="nav-text">工作台</span>
+                <span className="nav-text">首页</span>
               </Link>
             </Menu.Item>
-            <Menu.Item key="users">
-              <Link to="users">
-                <Icon type="user" />
-                <span className="nav-text">用户管理</span>
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="services">
-              <Link to="services">
+            <Menu.Item key="list">
+              <Link to="list">
                 <Icon type="video-camera" />
-                <span className="nav-text">服务列表</span>
+                <span className="nav-text">列表</span>
               </Link>
             </Menu.Item>
           </Menu>
-        </asider>
+        </Sider>
         <Layout>
-          <header>
-            <Icon
-              className="trigger" />
-          </header>
-          <content>
+
+          <Content>
             {children}
-          </content>
+          </Content>
         </Layout>
       </Layout>
     );

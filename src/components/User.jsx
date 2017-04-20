@@ -1,19 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 
-class Home extends Component {
+class User extends Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
       <div>
-        首页
+        用户区
       </div>
     )
   }
 }
 
-Home.propTypes = {
+User.propTypes = {
 }
 
-export default Home;
+export default User;

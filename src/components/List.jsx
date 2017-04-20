@@ -1,19 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 
-class Home extends Component {
+class List extends Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
       <div>
-        首页
+        列表区
       </div>
     )
   }
 }
 
-Home.propTypes = {
+List.propTypes = {
 }
 
-export default Home;
+export default List;

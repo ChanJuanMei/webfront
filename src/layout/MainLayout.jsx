@@ -1,15 +1,16 @@
 import React, { Component, PropTypes } from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Breadcrumb } from 'antd';
 import { Router, Link } from 'dva/router';
 import styles from './MainLayout.less';
 
-const { Header, Sider, Content } = Layout;
+const { Header, Content, Footer, Sider } = Layout;
 
 const reg = /^\/(\w+[^/])/;
 class MainLayout extends Component {
   state = {
     defaultSelectedKeys: 'home'
   };
+
 
   render() {
     const { children, location } = this.props;
@@ -20,31 +21,52 @@ class MainLayout extends Component {
     return (
       <Layout className={styles.layout}>
         <Sider
-          trigger={null}
-          collapsible>
-          <div className="logo" />
-          <Menu
-            theme="dark"
-            mode="inline">
+          breakpoint="lg"
+          collapsedWidth="0"
+          defaultCollapsed={false}
+        >
+          <div className={styles.logo}><h3>welcome to my website</h3></div>
+          <Menu theme="dark" mode="inline" selectedKeys={[keys]}>
             <Menu.Item key="home">
               <Link to="home">
-                <Icon type="pie-chart" />
-                <span className="nav-text">首页</span>
+                <Icon type="user" />
+                <span className="nav-text">工作台</span>
               </Link>
             </Menu.Item>
             <Menu.Item key="list">
               <Link to="list">
                 <Icon type="video-camera" />
-                <span className="nav-text">列表</span>
+                <span className="nav-text">数据清单</span>
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="user">
+              <Link to="user">
+                <Icon type="user" />
+                <span className="nav-text">用户管理</span>
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="list">
+              <Link to="list">
+                <Icon type="upload" />
+                <span className="nav-text">nav 4</span>
               </Link>
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout>
-
-          <Content>
-            {children}
+          <Header className={styles.header}>
+            <Breadcrumb separator=">">
+              <Breadcrumb.Item>{keys}</Breadcrumb.Item>
+            </Breadcrumb>
+          </Header>
+          <Content style={{ margin: '24px 16px 0' }}>
+            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+              {children}
+            </div>
           </Content>
+          <Footer style={{ textAlign: 'center' }}>
+            Created by 2017/04/23
+          </Footer>
         </Layout>
       </Layout>
     );

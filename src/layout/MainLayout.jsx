@@ -30,7 +30,7 @@ class MainLayout extends Component {
             <Menu.Item key="home">
               <Link to="home">
                 <Icon type="user" />
-                <span className="nav-text">工作台</span>
+                <span className="nav-text">首页</span>
               </Link>
             </Menu.Item>
             <Menu.Item key="list">
@@ -43,12 +43,6 @@ class MainLayout extends Component {
               <Link to="user">
                 <Icon type="user" />
                 <span className="nav-text">用户管理</span>
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="list">
-              <Link to="list">
-                <Icon type="upload" />
-                <span className="nav-text">nav 4</span>
               </Link>
             </Menu.Item>
           </Menu>

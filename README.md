@@ -1,5 +1,6 @@
 # webfront
-react/and + dva脚手架，使用roadhog编译构。
+react/and + dva + mock脚手架，使用roadhog编译构。
+
 
 ## 环境准备
 -   安装nodejs最新版本（当前2017-01-09为v6.9.0），可以使用淘宝镜像服务下载安装（https://npm.taobao.org/）
